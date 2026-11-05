@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Riesgo de crédito en empresas mercantiles</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--tx:#14213d;--mu:#5b6b85;--ac:#2563eb;--ac2:#f59e0b;--ok:#10b981;--bad:#ef4444;--bd:#dbe3ef;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1526;--card:#16213a;--tx:#e8eefc;--mu:#9fb0cf;--ac:#60a5fa;--ac2:#fbbf24;--bd:#27365a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1526;--card:#16213a;--tx:#e8eefc;--mu:#9fb0cf;--ac:#60a5fa;--ac2:#fbbf24;--bd:#27365a;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
+.slide{display:none;max-width:1100px;margin:0 auto;padding:20px 18px 90px;animation:in .45s ease}
+.slide.on{display:block}@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.hero svg{width:150px;height:110px;flex:none}
+.hero h1{margin:0;font-size:clamp(1.5rem,4vw,2.3rem)}.hero p{margin:4px 0 0;color:var(--mu)}
+.num{display:inline-block;background:var(--ac);color:#fff;border-radius:99px;padding:2px 12px;font-size:.8rem;font-weight:700;margin-bottom:6px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:14px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+button{font:inherit;cursor:pointer}
+.tab{border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:99px;padding:7px 14px}
+.tab.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.pn{display:none}.pn.on{display:block;animation:in .3s}
+.pill{display:inline-block;background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:3px 10px;margin:2px;font-size:.85rem}
+.flip{cursor:pointer;min-height:120px;transition:transform .2s}.flip:hover{transform:translateY(-3px)}
+.flip .b{display:none;color:var(--mu)}.flip.on .b{display:block}.flip.on .f{color:var(--ac)}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.big{font-size:2rem;font-weight:800;color:var(--ac2)}
+.bar{height:14px;border-radius:8px;background:var(--bd);overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--ac2),var(--bad));transition:width .3s}
+table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{padding:7px 6px;border-bottom:1px solid var(--bd);text-align:right}th:first-child,td:first-child{text-align:left}
+td input{width:62px;font:inherit;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:3px}
+.tbl{overflow-x:auto}.mini{height:8px;border-radius:4px;background:var(--ac2);min-width:2px;transition:width .3s}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.nav{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;align-items:center;gap:14px;background:var(--card);border-top:1px solid var(--bd)}
+.nav button{border:0;background:var(--ac);color:#fff;border-radius:99px;padding:8px 18px}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--bd);padding:0;margin:0 4px}.dots button.on{background:var(--ac);transform:scale(1.3)}
+</style></head><body>
+
+<section class="slide on">
+<div class="hero"><svg viewBox="0 0 150 110" aria-hidden="true"><rect x="10" y="12" width="70" height="88" rx="8" fill="#2563eb"/><rect x="20" y="26" width="50" height="6" rx="3" fill="#fff"/><rect x="20" y="40" width="38" height="6" rx="3" fill="#bcd0ff"/><rect x="20" y="54" width="44" height="6" rx="3" fill="#bcd0ff"/><text x="22" y="86" fill="#fbbf24" font-size="18" font-weight="700">$ ?</text><circle cx="108" cy="55" r="34" fill="#f59e0b"/><path d="M92 55l12 12 20-24" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
+<div><span class="num">1 de 4</span><h1>Riesgo inherente de crédito</h1><p>Nace de la venta a plazos: ¿y si el cliente no paga la factura?</p></div></div>
+<div class="tabs" data-g="a"><button class="tab on" data-p="a1">Crédito vs. contraparte</button><button class="tab" data-p="a2">Incapacidad vs. indisponibilidad</button><button class="tab" data-p="a3">Figuras de exposición</button><button class="tab" data-p="a4">Comercial y país</button></div>
+<div class="card pn on" id="a1"><div class="grid"><div><h3>🧾 Crédito comercial tradicional</h3><p>Se mide por el saldo de las facturas a clientes (cuentas por cobrar). La pérdida máxima es el valor de la mercancía entregada más los servicios prestados.</p></div><div><h3>🤝 Crédito de contraparte</h3><p>Surge con contratos de suministro a largo plazo, compras programadas o derivados (combustible, divisas a futuro). Si la contraparte quiebra antes de entregar, te quedas sin la materia prima al precio pactado.</p></div></div></div>
+<div class="card pn" id="a2"><div class="grid"><div><h3>📉 Incapacidad de pago</h3><p>El cliente tiene problemas de liquidez, quiebra técnica, pérdida de mercado o insolvencia: no puede pagar.</p></div><div><h3>⏸️ Indisponibilidad</h3><p>Tiene fondos, pero hay disputas comerciales (facturas mal emitidas, mercancía dañada) o una falla operativa/hackeo en su tesorería que retrasa los pagos.</p></div></div></div>
+<div class="card pn" id="a3"><p style="color:var(--mu);margin-top:0">Toca cada figura:</p><div class="grid">
+<div class="card flip"><b class="f">👤 Deudor</b><p class="b">La empresa compradora que firmó la orden de compra o el contrato de crédito.</p></div>
+<div class="card flip"><b class="f">📄 Emisor</b><p class="b">Aplica si la empresa invierte excedentes de caja en pagarés o títulos de deuda de otras corporaciones.</p></div>
+<div class="card flip"><b class="f">🛡️ Garante / fiador</b><p class="b">Socios del cliente como fiadores solidarios, o un banco que emite fianza de cumplimiento o carta de crédito.</p></div></div></div>
+<div class="card pn" id="a4"><div class="grid"><div><h3>🏭 Riesgo comercial</h3><p>Que el sector de tu cliente entre en crisis (ej.: vender empaques a una industria automotriz en declive).</p></div><div><h3>🌍 Riesgo país (exportadoras)</h3><p>Bloqueos a importaciones, devaluaciones severas o restricciones de divisas que impiden al cliente extranjero transferir el pago (riesgo de transferencia).</p></div></div></div>
+</section>
+
+<section class="slide">
+<div class="hero"><svg viewBox="0 0 150 110" aria-hidden="true"><path d="M20 90h110" stroke="#5b6b85" stroke-width="3"/><rect x="26" y="50" width="22" height="40" fill="#10b981"/><rect x="58" y="34" width="22" height="56" fill="#f59e0b"/><rect x="90" y="14" width="22" height="76" fill="#ef4444"/><text x="22" y="105" font-size="10" fill="#5b6b85">PD × LGD × EAD</text></svg>
+<div><span class="num">2 de 4</span><h1>Default y pérdida esperada</h1><p>De reaccionar tarde a anticiparse desde la factura.</p></div></div>
+<div class="grid">
+<div class="card"><h3>⚖️ ¿Cuándo hay default?</h3><div class="tabs" data-g="b"><button class="tab on" data-p="b1">Objetivo</button><button class="tab" data-p="b2">Subjetivo</button></div>
+<div class="pn on" id="b1"><p>Factura que excede el plazo más el «periodo de gracia comercial». Ej.: crédito a 30 días con atraso adicional de 60 o 90 días.</p></div>
+<div class="pn" id="b2"><p>Concurso de acreedores o quiebra, cierre imprevisto de oficinas, o reportes de agencias de que deja de pagar a otros proveedores.</p></div>
+<h3>🔁 Incurrida vs. esperada</h3><p><span class="pill">Incurrida: provisión tardía, oculta el riesgo ❌</span><span class="pill">Esperada: se calcula al emitir la factura ✅</span></p></div>
+<div class="card"><h3>🧮 Calculadora PE = PD × LGD × EAD</h3>
+<label>PD (probabilidad de default): <b id="vpd">5</b>%<input type="range" id="pd" min="0" max="40" value="5"></label>
+<label>LGD (pérdida si incumple): <b id="vlgd">60</b>%<input type="range" id="lgd" min="0" max="100" value="60"></label>
+<label>EAD (exposición): $<b id="vead">100000</b><input type="range" id="ead" min="10000" max="500000" step="5000" value="100000"></label>
+<p style="margin:8px 0 2px">Pérdida esperada</p><div class="big" id="pe">$3,000</div><div class="bar"><i id="peb"></i></div>
+<p style="color:var(--mu);font-size:.85rem">LGD baja si la mercancía se recupera (reserva de dominio); cerca del 100 % en servicios o bienes perecederos. EAD = facturas vivas + órdenes en camino.</p></div></div>
+</section>
+
+<section class="slide">
+<div class="hero"><svg viewBox="0 0 150 110" aria-hidden="true"><rect x="12" y="14" width="126" height="82" rx="10" fill="#2563eb"/><rect x="24" y="30" width="102" height="10" fill="#bcd0ff"/><rect x="24" y="48" width="80" height="10" fill="#bcd0ff"/><rect x="24" y="66" width="60" height="10" fill="#fbbf24"/><text x="98" y="88" font-size="11" fill="#fff" font-weight="700">NIIF 9</text></svg>
+<div><span class="num">3 de 4</span><h1>NIIF 9: método simplificado</h1><p>Pérdida esperada de toda la vida (Lifetime ECL) desde el día 1, sin las 3 etapas bancarias.</p></div></div>
+<div class="card"><h3>📊 Matriz de provisiones (edita las tasas)</h3><div class="tbl"><table><thead><tr><th>Antigüedad</th><th>Saldo</th><th>Tasa %</th><th>Provisión</th><th></th></tr></thead><tbody id="mx"></tbody><tfoot><tr><th>Total cartera</th><th id="ts"></th><th></th><th id="tp"></th><th></th></tr></tfoot></table></div>
+<p style="color:var(--mu);font-size:.85rem;margin-bottom:0">Las tasas combinan pérdida histórica y factores macroeconómicos futuros (inflación, PIB del sector). Cartera total / provisión: <b id="pc"></b></p></div>
+</section>
+
+<section class="slide">
+<div class="hero"><svg viewBox="0 0 150 110" aria-hidden="true"><circle cx="45" cy="55" r="30" fill="#10b981"/><circle cx="105" cy="55" r="30" fill="#f59e0b"/><path d="M75 33a30 30 0 010 44 30 30 0 010-44z" fill="#2563eb"/><text x="28" y="60" fill="#fff" font-size="11" font-weight="700">Ventas</text><text x="86" y="60" fill="#fff" font-size="11" font-weight="700">Finanzas</text></svg>
+<div><span class="num">4 de 4</span><h1>Gestión del riesgo de crédito</h1><p>Equilibrar a Ventas (vender a todos) con Finanzas (asegurar la liquidez).</p></div></div>
+<div class="card"><h3>🔄 Proceso crediticio</h3><div class="tabs" data-g="c"><button class="tab on" data-p="c1">1 Originación</button><button class="tab" data-p="c2">2 Seguimiento</button><button class="tab" data-p="c3">3 Cobranza</button></div>
+<div class="pn on" id="c1"><p>El cliente pide una línea. Se solicitan estados financieros, referencias comerciales, estados de cuenta y consulta en burós. El Comité o Gerente de Crédito aprueba un límite y condiciones (ej. neto 30 días).</p></div>
+<div class="pn" id="c2"><p>El ERP (SAP, Oracle…) bloquea pedidos si se supera el límite o hay facturas vencidas más de «X» días. Se revisa de forma continua el DSO (días promedio de cobro).</p></div>
+<div class="pn" id="c3"><p><span class="pill">Preventiva: estado de cuenta 5 días antes</span><span class="pill">Administrativa: llamadas y correos 30–45 días, suspensión de despachos</span><span class="pill">Pre-legal y legal: agencias o demanda con pagaré/factura</span></p></div></div>
+<div class="grid">
+<div class="card"><h3>📜 Políticas y procedimientos</h3><p>Reglas: «sin crédito a clientes con menos de 2 años» o «más de $50,000 requiere fianza o aval». Cobro: día 3 correo, día 7 llamada, día 15 congelar cuenta.</p></div>
+<div class="card"><h3>🎯 Concentración</h3><p>Límite de un cliente: <b id="vcl">15</b>% de las cuentas por cobrar</p><input type="range" id="cl" min="5" max="40" value="15"><p id="clt" style="margin-bottom:0"></p></div>
+<div class="card"><h3>☂️ Seguro de crédito</h3><p>Una aseguradora (como Euler Hermes o Coface) asume el impago de la cartera a cambio de una prima. Además: límites por cliente.</p></div></div>
+</section>
+
+<div class="nav"><button id="pv" aria-label="Anterior">←</button><div class="dots"></div><button id="nx" aria-label="Siguiente">→</button></div>
+<script>
+var S=[].slice.call(document.querySelectorAll('.slide')),n=0,D=document.querySelector('.dots');
+S.forEach(function(_,i){var b=document.createElement('button');b.onclick=function(){go(i)};D.appendChild(b)});
+function go(i){n=(i+S.length)%S.length;S.forEach(function(s,j){s.classList.toggle('on',j==n)});[].forEach.call(D.children,function(b,j){b.classList.toggle('on',j==n)});scrollTo(0,0)}
+pv.onclick=function(){go(n-1)};nx.onclick=function(){go(n+1)};
+document.onkeydown=function(e){if(e.key=='ArrowRight')go(n+1);if(e.key=='ArrowLeft')go(n-1)};
+document.querySelectorAll('.tabs').forEach(function(t){t.onclick=function(e){var b=e.target.closest('.tab');if(!b)return;
+t.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x==b);document.getElementById(x.dataset.p).classList.toggle('on',x==b)})}});
+document.querySelectorAll('.flip').forEach(function(f){f.onclick=function(){f.classList.toggle('on')}});
+var $=function(i){return document.getElementById(i)},f=function(x){return '$'+Math.round(x).toLocaleString('en-US')};
+function pe(){var p=+$('pd').value,l=+$('lgd').value,e=+$('ead').value,v=p/100*l/100*e;$('vpd').textContent=p;$('vlgd').textContent=l;$('vead').textContent=e.toLocaleString('en-US');$('pe').textContent=f(v);$('peb').style.width=Math.min(100,v/e*100*8)+'%'}
+['pd','lgd','ead'].forEach(function(i){$(i).oninput=pe});pe();
+var R=[['Corriente (0–30 días)',500000,.5],['Vencido 1–30 días',150000,2],['Vencido 31–60 días',60000,8],['Vencido 61–90 días',30000,25],['Más de 90 días',15000,70]];
+function mx(){var h='',ts=0,tp=0;R.forEach(function(r,i){var p=r[1]*r[2]/100;ts+=r[1];tp+=p;h+='<tr><td>'+r[0]+'</td><td>'+f(r[1])+'</td><td><input type="number" step=".5" min="0" max="100" value="'+r[2]+'" data-i="'+i+'"></td><td>'+f(p)+'</td><td style="width:20%"><div class="mini" style="width:'+Math.min(100,p/105)+'%"></div></td></tr>'});
+$('mx').innerHTML=h;$('ts').textContent=f(ts);$('tp').textContent=f(tp);$('pc').textContent=(tp/ts*100).toFixed(2)+' %'}
+$('mx').onchange=function(e){var i=e.target.dataset.i;if(i!=null){R[i][2]=Math.max(0,Math.min(100,+e.target.value||0));mx()}};mx();
+$('cl').oninput=function(){var v=+this.value;$('vcl').textContent=v;$('clt').textContent=v<=15?'✅ Concentración sana: si quiebra ese cliente, el golpe es acotado.':v<=25?'⚠️ Concentración alta: conviene garantías o seguro.':'🚨 Muy riesgoso: un solo cliente puede arrastrar a la empresa.'};$('cl').oninput();
+go(0);
+</script></body></html>
